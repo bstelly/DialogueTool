@@ -9,12 +9,6 @@ namespace DialogueTool
 {
     public partial class FormEditor : Form
     {
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
         public FormEditor(FormMain parent, string directory)
         {
             InitializeComponent();
@@ -46,23 +40,11 @@ namespace DialogueTool
             }
         }
 
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
         private void FormEditor_FormClosed(object sender, FormClosedEventArgs e)
         {
             parentForm.Close();
         }
 
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
         private void Tree_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             Tree.SelectedNode = e.Node;
@@ -73,12 +55,6 @@ namespace DialogueTool
             //Other properties should be assigned on Node click
         }
 
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (Tree.Nodes[0].IsSelected)
@@ -108,12 +84,6 @@ namespace DialogueTool
                 RemoveFromTree();
         }
 
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
         private void buttonAddNode_Click(object sender, EventArgs e)
         {
             for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
@@ -140,12 +110,6 @@ namespace DialogueTool
                     }
         }
 
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
         private void buttonAddRoot_Click(object sender, EventArgs e)
         {
             Tree.Nodes[0].Nodes.Add(new TreeNode("New Root"));
@@ -153,23 +117,11 @@ namespace DialogueTool
             Tree.Nodes[0].Expand();
         }
 
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
         private void buttonRemove_Click(object sender, EventArgs e)
         {
             RemoveFromTree();
         }
 
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
         private void buttonOpenViewer_Click(object sender, EventArgs e)
         {
             if (fileDir != "")
@@ -184,27 +136,18 @@ namespace DialogueTool
             }
         }
 
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
         private void buttonSave_Click(object sender, EventArgs e)
         {
             SetConversationId();
             saveFileDialog.ShowDialog();
             fileDir = saveFileDialog.FileName;
-            dialogue.Save(fileDir);
+            if (fileDir != "")
+            {
+                dialogue.Save(fileDir);
+            }
+            
         }
 
-
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
         private void ToggleRootTextboxes()
         {
             for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
@@ -228,12 +171,6 @@ namespace DialogueTool
             }
         }
 
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
         private void RemoveFromTree()
         {
             var result = DialogResult.OK;
@@ -270,12 +207,6 @@ namespace DialogueTool
             }
         }
 
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
         private void ToggleNodeTextboxes()
         {
             for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
@@ -314,12 +245,6 @@ namespace DialogueTool
             }
         }
 
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
         private void textBoxConvIdInput_TextChanged(object sender, EventArgs e)
         {
             Tree.Nodes[0].Nodes[GetSelectedRoot()].Text = textBoxConvIdInput.Text;
@@ -329,12 +254,6 @@ namespace DialogueTool
             }
         }
 
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
         private void textBoxParticipantNumInput_TextChanged(object sender, EventArgs e)
         {
             string[] numbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
@@ -358,12 +277,6 @@ namespace DialogueTool
             }
         }
 
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
         private void textBoxParticipantNameInput_TextChanged(object sender, EventArgs e)
         {
             for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
@@ -378,12 +291,6 @@ namespace DialogueTool
             }
         }
 
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
         private void textBoxEmoteTypeInput_TextChanged(object sender, EventArgs e)
         {
             for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
@@ -398,12 +305,6 @@ namespace DialogueTool
             }
         }
 
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
         private void textBoxSideInput_TextChanged(object sender, EventArgs e)
         {
             for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
@@ -418,12 +319,6 @@ namespace DialogueTool
             }
         }
 
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
         private void textBoxSpecialityAnimationInput_TextChanged(object sender, EventArgs e)
         {
             for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
@@ -439,12 +334,6 @@ namespace DialogueTool
             }
         }
 
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:v
         private void textBoxSpecialtyCameraInput_TextChanged(object sender, EventArgs e)
         {
             for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
@@ -459,12 +348,6 @@ namespace DialogueTool
             }
         }
 
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
         private void textBoxLineInput_TextChanged(object sender, EventArgs e)
         {
             for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
@@ -479,12 +362,6 @@ namespace DialogueTool
             }
         }
 
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
         private void textBoxConversationSummaryInput_TextChanged(object sender, EventArgs e)
         {
             foreach (var node in dialogue.DialogueRoot[GetSelectedRoot()].DialogueNode)
@@ -493,12 +370,6 @@ namespace DialogueTool
             }
         }
 
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
         private int GetSelectedRoot()
         {
             for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
@@ -511,12 +382,6 @@ namespace DialogueTool
         }
 
 
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
         private void SetConversationId()
         {
             for (int i = 0; i < dialogue.DialogueRoot.Count; i++)
@@ -528,12 +393,6 @@ namespace DialogueTool
             }
         }
 
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
         private void GetDisplayText()
         {
             for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
